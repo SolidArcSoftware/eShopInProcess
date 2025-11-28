@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DataArc.OrchestratR.Abstractions" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\domain\EShop.Domain.Ordering\EShop.Domain.Ordering.csproj" />
   </ItemGroup>
 

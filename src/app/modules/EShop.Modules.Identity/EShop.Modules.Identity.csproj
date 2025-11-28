@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\usecases\EShop.UseCases.Identity\EShop.UseCases.Identity.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\orchestration\EShop.Orchestration.Identity\EShop.Orchestration.Identity.csproj" />
+    <ProjectReference Include="..\..\features\EShop.Features.Identity\EShop.Features.Identity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.*" />
+  </ItemGroup>
+
+</Project>

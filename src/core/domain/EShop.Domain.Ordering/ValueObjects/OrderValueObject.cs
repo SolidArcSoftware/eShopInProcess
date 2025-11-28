@@ -1,36 +1,41 @@
-﻿using EShop.Domain.Ordering.Entities;
-using EShop.Domain.Ordering.Enums;
+﻿using EShop.Domain.Ordering.Enums;
 using EShop.Domain.SharedKernel.ValueObjects;
 
 namespace EShop.Domain.Ordering.ValueObjects
 {
-    public class OrderValueObject : ValueObject
+    public sealed class OrderValueObject : ValueObject
     {
-        public int? PaymentId { get; set; }
-        public AddressValueObject Address { get; private set; }
-        public int? BuyerId { get; private set; }
-        public Buyer Buyer { get; }
-        public OrderStatus OrderStatus { get; private set; }
-        public string Description { get; private set; }
-        public DateTime OrderDate { get; set; }
+        public int? BuyerId { get; }
+        public int? PaymentId { get; }
+        public AddressValueObject Address { get; }
+        public OrderStatus OrderStatus { get; }
+        public string Description { get; }
+        public DateTime OrderDate { get; }
 
-        public OrderValueObject(string userId, string userName, AddressValueObject address, int cardTypeId, string cardNumber, string cardSecurityNumber,
-                string cardHolderName, DateTime cardExpiration, int? buyerId = null, int? paymentMethodId = null)
+        public OrderValueObject(
+            int? buyerId,
+            int? paymentId,
+            AddressValueObject address,
+            OrderStatus orderStatus,
+            string description,
+            DateTime orderDate)
         {
             BuyerId = buyerId;
-            PaymentId = paymentMethodId;
-            OrderStatus = OrderStatus.Submitted;
-            OrderDate = DateTime.UtcNow;
+            PaymentId = paymentId;
             Address = address;
+            OrderStatus = orderStatus;
+            Description = description;
+            OrderDate = orderDate;
         }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return BuyerId;
-            yield return PaymentId;
-            yield return OrderStatus;
-            yield return OrderDate;
+            yield return BuyerId!;
+            yield return PaymentId!;
             yield return Address;
+            yield return OrderStatus;
+            yield return Description;
+            yield return OrderDate;
         }
     }
 }
