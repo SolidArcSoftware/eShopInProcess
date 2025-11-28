@@ -1,6 +1,18 @@
-﻿namespace EShopInProcess.Integration.Tests.Modules
+﻿using EShop.Modules.Identity.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace EShopInProcess.Integration.Tests.Modules
 {
-    internal class EShop_Identity_Module_Tests
+    public class EShop_Identity_Module_Tests
     {
+        [SetUp]
+        public void SetUp()
+        {
+            var serviceProvider = new ServiceCollection()
+                .AddIdentityModule() // Add the Identity module
+                .BuildServiceProvider();
+        }
+
+        // Add your tests here
     }
 }

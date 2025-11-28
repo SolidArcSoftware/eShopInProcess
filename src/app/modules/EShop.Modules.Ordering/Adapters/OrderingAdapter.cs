@@ -1,9 +1,10 @@
-﻿using DataArc.OrchestratR.Abstractions;
+﻿using DataArc.OrchestratR;
+using DataArc.OrchestratR.Abstractions;
+
 using EShop.UseCases.Ordering.Contracts.Input;
 using EShop.UseCases.Ordering.Contracts.Output;
 using EShop.UseCases.Ordering.Ports;
 
-using DataArc.OrchestratR;
 using EShop.Orchestration.Ordering.Orchestrators;
 
 namespace EShop.Modules.Ordering.Adapters

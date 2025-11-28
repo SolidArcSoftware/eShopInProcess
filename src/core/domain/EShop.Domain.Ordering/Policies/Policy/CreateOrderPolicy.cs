@@ -1,9 +1,7 @@
 ﻿using EShop.Domain.Ordering.Events;
 using EShop.Domain.Ordering.Policies.Context;
 using EShop.Domain.Ordering.Policies.Contracts;
-using EShop.Domain.Ordering.ValueObjects;
 using EShop.Domain.SharedKernel.Policies;
-using System.Net;
 
 namespace EShop.Domain.Ordering.Policies.Policy
 {
@@ -11,21 +9,19 @@ namespace EShop.Domain.Ordering.Policies.Policy
     {
         public PolicyResult Apply(CreateOrderPolicyContext context)
         {
-            //if (context.CanCreateOrder()){
-            //    return PolicyResult.Success(new OrderStartedDomainEvent(new OrderValueObject(
-            //    createOrderInput.UserId,
-            //    createOrderInput.UserName,
-            //    address,
-            //    createOrderInput.CardTypeId,
-            //    createOrderInput.CardNumber,
-            //    createOrderInput.CardSecurityNumber,
-            //    createOrderInput.CardHolderName,
-            //    createOrderInput.CardExpiration
-            //)));
-            //}
+            // Safety: context cannot be null because ctor enforces it
+            if (!context.CanCreateOrder())
+            {
+                //Return failure
+            }
 
-            //return PolicyResult.Fail("Order was cancelled", new OrderCancelledDomainEvent());
-            return PolicyResult.Success();
+            // If the order is valid, we emit a domain event indicating the order process has started
+            var startedEvent = new OrderStartedDomainEvent(
+                context.Order,
+                context.Address
+            );
+
+            return PolicyResult.Success(startedEvent);
         }
     }
 }

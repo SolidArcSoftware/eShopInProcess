@@ -9,7 +9,10 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\usecases\EShop.UseCases.Identity\EShop.UseCases.Identity.csproj" />
   </ItemGroup>
 
 </Project>

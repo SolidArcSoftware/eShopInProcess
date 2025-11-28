@@ -1,15 +1,14 @@
-﻿using EShop.Domain.Ordering.Entities;
+﻿using EShop.Domain.Ordering.ValueObjects;
 using EShop.Domain.SharedKernel.Events;
 
 namespace EShop.Domain.Ordering.Events;
 
 public class OrderCancelledDomainEvent : IDomainEvent
 {
-    public Order Order { get; }
+    public OrderValueObject Order { get; }
 
-    public OrderCancelledDomainEvent(Order order)
+    public OrderCancelledDomainEvent(OrderValueObject order)
     {
         Order = order;
     }
 }
-
