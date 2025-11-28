@@ -13,8 +13,4 @@
     <Folder Include="Ports\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DataArc.OrchestratR.Abstractions" Version="1.0.0" />
-  </ItemGroup>
-
 </Project>
